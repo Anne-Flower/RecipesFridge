@@ -1,0 +1,15 @@
+<h1>Recettes</h1>
+<%# <%= @recipes.inspect %> 
+<% @recipes.each do |recipe| %>
+  <div>
+    <h2><%= recipe["name"] %></h2>
+<% if recipe["image"].present? %>
+  <img src="<%= recipe["image"] %>" alt="<%= recipe["name"] %>" width="400" height="300">
+<% end %>
+    <p><strong>Temps de préparation:</strong> <%= recipe["prep_time"] %></p>
+    <p><strong>Temps de cuisson:</strong> <%= recipe["cook_time"] %></p>
+    <p><strong>Difficulté:</strong> <%= recipe["difficulty"] %></p>
+    <p><strong>Budget:</strong> <%= recipe["budget"] %></p>
+    <%= link_to "Voir recette", recipe_path(id: recipe["id"]) %>
+  </div>
+<% end %>
