@@ -1,0 +1,8 @@
+<ul id="ingredients-list">
+  <% user_ingredients.each do |ingredient| %>
+    <li>
+      <%= ingredient[:name] %> - <%= ingredient[:quantity] %> <%= ingredient[:unit] %>
+      <%= button_to "Supprimer", remove_ingredient_user_path(@user, ingredient[:id]), method: :delete, data: { turbo_frame: "user_ingredients" } %>
+    </li>
+  <% end %>
+</ul>

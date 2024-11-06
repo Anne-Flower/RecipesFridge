@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   resources :recipes
   resources :ingredients
-  resources :users
+  resources :users, only: [:show] do
+    post :add_ingredient, on: :member
+    delete :remove_ingredient, on: :member
+    
+  end
 
   # Defines the root path route ("/")
   # root "posts#index"

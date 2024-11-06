@@ -1,0 +1,20 @@
+<h1>Mes Ingrédients</h1>
+
+<%= form_with url: add_ingredient_user_path(@user), method: :post, data: { turbo_frame: "user_ingredients" } do |f| %>
+  <div>
+    <%= label_tag :ingredient_name, "Ingrédient" %>
+    <%= text_field_tag :ingredient_name, '', placeholder: "Entrez un ingrédient" %>
+
+    <%= label_tag :quantity, "Quantité" %>
+    <%= number_field_tag :quantity, '', min: 1 %>
+
+    <%= label_tag :unit, "Unité" %>
+    <%= select_tag :unit, options_for_select(['g', 'kg', 'ml', 'L']) %>
+
+    <%= f.submit "Ajouter", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= turbo_frame_tag "user_ingredients" do %>
+  <%= render partial: "users/ingredients_list", locals: { user_ingredients: @user_ingredients } %>
+<% end %>
